@@ -95,8 +95,9 @@ h3{font-size:1.5rem}
 .nav__menu a:hover{opacity:1;color:var(--gold-soft)}
 .nav__menu a:not(.nav__cta)::after{content:"";position:absolute;left:0;bottom:-2px;width:0;height:1px;background:var(--gold);transition:.3s}
 .nav__menu a:not(.nav__cta):hover::after{width:100%}
-.nav__cta{border:1px solid var(--gold);color:var(--gold-soft);padding:8px 20px;border-radius:50px}
-.nav__cta:hover{background:rgba(201,162,75,.12)}
+.nav__cta{border:1px solid var(--gold);background:var(--gold);padding:8px 20px;border-radius:50px;font-weight:500}
+.nav__menu a.nav__cta,.nav__menu a.nav__cta:hover{color:var(--wine)}
+.nav__cta:hover{background:var(--gold-soft);border-color:var(--gold-soft)}
 
 .nav-toggle{display:none;flex-direction:column;gap:5px;background:none;border:none;cursor:pointer;padding:6px}
 .nav-toggle span{width:26px;height:2px;background:var(--text);transition:.3s}
