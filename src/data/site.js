@@ -6,7 +6,7 @@ export const CONTACTO = {
   // Número en formato internacional sin "+", espacios ni guiones.
   whatsapp: "5491141699328",          // 11 4169-9328 (formato internacional AR móvil: 549 + área + número)
   instagram: "vinoswalco",            // TODO: confirmar usuario real
-  email: "hola@vinoswalco.com.ar",    // TODO: confirmar / quitar si no aplica
+  email: "walco2026@gmail.com",
 };
 
 /** Arma un enlace de WhatsApp con texto pre-cargado. */
