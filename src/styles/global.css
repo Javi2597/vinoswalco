@@ -284,7 +284,7 @@ h3{font-size:1.5rem}
   .footer__inner{flex-direction:column;text-align:center}
 }
 @media(max-width:480px){
-  .vinos__grid,.historia__cifras{grid-template-columns:1fr}
+  .vinos__grid{grid-template-columns:1fr}
   .modal__img{padding:16px}
   .modal__img img{max-height:190px}
   .modal__info{padding:24px 22px}
