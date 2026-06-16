@@ -1,0 +1,48 @@
+---
+// 4 · LOS VINOS — catálogo y filtros renderizados en build
+import { VINOS } from '../data/vinos.js';
+import { BODEGAS, nombreBodega, etiquetaBodega } from '../data/bodegas.js';
+
+const filtros = [
+  { id: 'todos', label: 'Todos' },
+  ...BODEGAS.map((b) => ({ id: b.id, label: etiquetaBodega(b.nombre) })),
+];
+---
+<section class="section vinos" id="vinos">
+  <div class="container">
+    <div class="section__head">
+      <span class="eyebrow">El catálogo</span>
+      <h2>Los vinos</h2>
+      <p>Tocá cada etiqueta para ver su ficha completa y consultá disponibilidad por WhatsApp.</p>
+    </div>
+
+    <div class="filtros" id="filtros">
+      {filtros.map((f, i) => (
+        <button class={`filtro ${i === 0 ? 'is-active' : ''}`} data-bodega={f.id}>{f.label}</button>
+      ))}
+    </div>
+
+    <div class="vinos__grid" id="vinos-grid">
+      {VINOS.map((v) => (
+        <article
+          class="vino-card"
+          data-id={v.id}
+          data-bodega={v.bodega}
+          tabindex="0"
+          role="button"
+          aria-label={`Ver ficha de ${v.nombre}`}
+        >
+          <div class="vino-card__img">
+            <img src={v.img} alt={`${v.nombre} — ${nombreBodega(v.bodega)}`} loading="lazy" />
+          </div>
+          <div class="vino-card__body">
+            <span class="vino-card__bodega">{nombreBodega(v.bodega)}</span>
+            <h3 class="vino-card__nombre">{v.nombre}</h3>
+            <p class="vino-card__varietal">{v.varietal}</p>
+            <span class="vino-card__ver">Ver ficha</span>
+          </div>
+        </article>
+      ))}
+    </div>
+  </div>
+</section>

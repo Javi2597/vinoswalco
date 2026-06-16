@@ -1,0 +1,17 @@
+---
+// Footer — año calculado en build
+import { waLink, igLink } from '../data/site.js';
+
+const wa = waLink('¡Hola Vinos Walco! Quiero hacer una consulta.');
+const anio = new Date().getFullYear();
+---
+<footer class="footer">
+  <div class="container footer__inner">
+    <span class="brand brand--footer">Vinos&nbsp;Walco<span>de altura</span></span>
+    <p class="footer__legal">Beber con moderación. Prohibida la venta a menores de 18 años.<br>© {anio} Vinos Walco · Norte argentino.</p>
+    <div class="footer__links">
+      <a href={wa} target="_blank" rel="noopener">WhatsApp</a>
+      <a href={igLink} target="_blank" rel="noopener">Instagram</a>
+    </div>
+  </div>
+</footer>

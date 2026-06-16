@@ -1,0 +1,23 @@
+---
+const links = [
+  { href: '#historia', label: 'Historia' },
+  { href: '#bodegas', label: 'Bodegas' },
+  { href: '#vinos', label: 'Los vinos' },
+  { href: '#origen', label: 'El origen' },
+  { href: '#comprar', label: 'Cómo comprar' },
+];
+---
+<header class="header">
+  <div class="container header__inner">
+    <a href="#inicio" class="brand">Vinos&nbsp;Walco<span>de altura</span></a>
+    <button class="nav-toggle" id="nav-toggle" aria-label="Abrir menú" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+    <nav class="nav">
+      <ul class="nav__menu" id="nav-menu">
+        {links.map((l) => <li><a href={l.href}>{l.label}</a></li>)}
+        <li><a href="#contacto" class="nav__cta">Contacto</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>

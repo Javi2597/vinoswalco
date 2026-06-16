@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Vinos Walco — Vinos de Altura del Norte Argentino</title>
+  <meta name="description" content="Vinos de altura del norte argentino. Venta directa de vinos de autor elaborados con comunidades originarias, cooperativas y fincas: Los Amaichás, Michango y María del Pilar.">
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Vinos Walco — Vinos de Altura">
+  <meta property="og:description" content="Vinos de autor del norte argentino. Venta directa, sin intermediarios.">
+  <meta property="og:image" content="img/mariadelpilar-01-enraizado.jpg">
+  <meta property="og:locale" content="es_AR">
+
+  <!-- Favicon (placeholder) -->
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🍷</text></svg>">
+
+  <!-- Tipografías -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="css/styles2.css">
+</head>
+<body>
+
+  <!-- Aviso +18 -->
+  <div class="edad" id="edad-gate">
+    <div class="edad__box">
+      <span class="edad__logo">VINOS WALCO</span>
+      <p class="edad__txt">Para ingresar confirmá que sos mayor de 18 años.</p>
+      <div class="edad__btns">
+        <button class="btn" id="edad-si">Soy mayor de 18</button>
+        <a class="btn btn--ghost" href="https://www.google.com">Soy menor</a>
+      </div>
+      <small class="edad__nota">Beber con moderación. Prohibida su venta a menores de 18 años.</small>
+    </div>
+  </div>
+
+  <!-- Header -->
+  <header class="header">
+    <div class="container header__inner">
+      <a href="#inicio" class="brand">Vinos&nbsp;Walco<span>de altura</span></a>
+      <button class="nav-toggle" id="nav-toggle" aria-label="Abrir menú" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+      <nav class="nav">
+        <ul class="nav__menu" id="nav-menu">
+          <li><a href="#historia">Historia</a></li>
+          <li><a href="#bodegas">Bodegas</a></li>
+          <li><a href="#vinos">Los vinos</a></li>
+          <li><a href="#origen">El origen</a></li>
+          <li><a href="#comprar">Cómo comprar</a></li>
+          <li><a href="#contacto" class="nav__cta">Contacto</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <!-- 1 · HERO -->
+    <section class="hero" id="inicio">
+      <div class="hero__overlay"></div>
+      <div class="container hero__content">
+        <p class="hero__kicker">Norte argentino · Vinos de autor</p>
+        <h1 class="hero__title">Vinos de altura,<br>de la raíz a tu copa</h1>
+        <p class="hero__sub">Trabajamos junto a comunidades originarias, cooperativas y fincas para llevar a tu mesa vinos únicos, sin intermediarios.</p>
+        <div class="hero__btns">
+          <a href="#vinos" class="btn">Conocé los vinos</a>
+          <a href="#historia" class="btn btn--ghost">Nuestra historia</a>
+        </div>
+      </div>
+      <div class="hero__scroll">↓</div>
+    </section>
+
+    <!-- 2 · NUESTRA HISTORIA -->
+    <section class="section historia" id="historia">
+      <div class="container historia__grid">
+        <div class="historia__txt">
+          <span class="eyebrow">Nuestra historia</span>
+          <h2>Un emprendimiento familiar con raíces en el norte</h2>
+          <p>Vinos Walco nació para acercar los vinos de altura del norte argentino a quienes buscan algo distinto. Recorremos valles, fincas y bodegas comunitarias eligiendo etiquetas con identidad.</p>
+          <p>Trabajamos de forma directa con quienes elaboran cada vino —comunidades originarias, cooperativas y familias productoras— y los llevamos a tu mesa <strong>sin intermediarios</strong>. Cada botella cuenta la historia de su origen, su gente y su altura.</p>
+        </div>
+        <div class="historia__cifras">
+          <div class="cifra"><span>3</span><small>Bodegas asociadas</small></div>
+          <div class="cifra"><span>11</span><small>Vinos en catálogo</small></div>
+          <div class="cifra"><span>+1000</span><small>Metros de altura</small></div>
+          <div class="cifra"><span>100%</span><small>Venta directa</small></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 3 · LAS BODEGAS -->
+    <section class="section bodegas" id="bodegas">
+      <div class="container">
+        <div class="section__head">
+          <span class="eyebrow">Las bodegas</span>
+          <h2>Quiénes hacen nuestros vinos</h2>
+          <p>Tres orígenes, una misma búsqueda: vinos honestos, de lugar y de gente.</p>
+        </div>
+        <div class="bodegas__grid" id="bodegas-grid"><!-- JS --></div>
+      </div>
+    </section>
+
+    <!-- 4 · LOS VINOS -->
+    <section class="section vinos" id="vinos">
+      <div class="container">
+        <div class="section__head">
+          <span class="eyebrow">El catálogo</span>
+          <h2>Los vinos</h2>
+          <p>Tocá cada etiqueta para ver su ficha completa y consultá disponibilidad por WhatsApp.</p>
+        </div>
+        <div class="filtros" id="filtros"><!-- JS --></div>
+        <div class="vinos__grid" id="vinos-grid"><!-- JS --></div>
+      </div>
+    </section>
+
+    <!-- 5 · EL ORIGEN -->
+    <section class="section origen" id="origen">
+      <div class="origen__bg"></div>
+      <div class="container origen__content">
+        <span class="eyebrow eyebrow--light">El origen</span>
+        <h2>Vinos que nacen en la altura</h2>
+        <p>Del Valle Calchaquí en Tucumán al Valle de Pomán en Catamarca y los suelos franco arenosos de Santiago del Estero: viñedos de altura, levaduras nativas e identidad diaguita. Una forma de hacer vino que respeta la tierra y los métodos transmitidos por generaciones.</p>
+        <p class="origen__nota">📸 Galería de paisajes del norte — próximamente.</p>
+      </div>
+    </section>
+
+    <!-- 6 · CÓMO COMPRAR -->
+    <section class="section comprar" id="comprar">
+      <div class="container">
+        <div class="section__head">
+          <span class="eyebrow">Cómo comprar</span>
+          <h2>Llevá nuestros vinos a tu mesa</h2>
+        </div>
+        <div class="pasos">
+          <div class="paso"><span class="paso__num">1</span><h3>Elegí tus vinos</h3><p>Mirá el catálogo y elegí tus etiquetas favoritas.</p></div>
+          <div class="paso"><span class="paso__num">2</span><h3>Escribinos</h3><p>Consultá disponibilidad y precios por WhatsApp. Te asesoramos en la elección.</p></div>
+          <div class="paso"><span class="paso__num">3</span><h3>Coordinamos el envío</h3><p>Acordamos forma de pago y entrega. Consultá zonas de envío.</p></div>
+        </div>
+        <div class="comprar__cta">
+          <a class="btn btn--wa" data-wa target="_blank" rel="noopener">Consultar por WhatsApp</a>
+          <p class="comprar__aviso">Venta exclusiva a mayores de 18 años. Beber con moderación.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- 7 · CONTACTO -->
+    <section class="section contacto" id="contacto">
+      <div class="container contacto__grid">
+        <div>
+          <span class="eyebrow">Contacto</span>
+          <h2>Hablemos</h2>
+          <p>Escribinos por el canal que prefieras y te respondemos a la brevedad.</p>
+          <ul class="contacto__lista">
+            <li><a class="contacto__item" data-wa target="_blank" rel="noopener"><strong>WhatsApp</strong><span>Consultas y pedidos</span></a></li>
+            <li><a class="contacto__item" data-ig="link" target="_blank" rel="noopener"><strong>Instagram</strong><span data-ig="text">@vinoswalco</span></a></li>
+            <li><a class="contacto__item" data-email="link"><strong>Email</strong><span data-email="text">hola@vinoswalco.com.ar</span></a></li>
+          </ul>
+        </div>
+        <form class="form" onsubmit="return false;">
+          <h3>Dejanos tu consulta</h3>
+          <label>Nombre<input type="text" name="nombre" required></label>
+          <label>Email o teléfono<input type="text" name="contacto" required></label>
+          <label>Mensaje<textarea name="mensaje" rows="4" required></textarea></label>
+          <button class="btn" type="submit">Enviar consulta</button>
+          <small class="form__nota">El formulario se conectará en la etapa final. Por ahora usá WhatsApp.</small>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container footer__inner">
+      <span class="brand brand--footer">Vinos&nbsp;Walco<span>de altura</span></span>
+      <p class="footer__legal">Beber con moderación. Prohibida la venta a menores de 18 años.<br>© <span id="anio"></span> Vinos Walco · Norte argentino.</p>
+      <div class="footer__links">
+        <a data-wa target="_blank" rel="noopener">WhatsApp</a>
+        <a data-ig="link" target="_blank" rel="noopener">Instagram</a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Modal ficha de vino -->
+  <div class="modal" id="modal" aria-hidden="true">
+    <div class="modal__backdrop" data-close></div>
+    <div class="modal__dialog" role="dialog" aria-modal="true" aria-label="Ficha del vino">
+      <div id="modal-contenido"><!-- JS --></div>
+    </div>
+  </div>
+
+  <script src="js/app.js?v=4"></script>
+  <script>
+    // Gate de edad (sessionStorage)
+    (function () {
+      const gate = document.getElementById("edad-gate");
+      if (location.search.indexOf("skipgate") !== -1 || sessionStorage.getItem("walco_edad") === "ok") gate.remove();
+      else document.body.classList.add("no-scroll");
+      document.getElementById("edad-si").addEventListener("click", () => {
+        sessionStorage.setItem("walco_edad", "ok");
+        gate.classList.add("is-hidden");
+        document.body.classList.remove("no-scroll");
+        setTimeout(() => gate.remove(), 400);
+      });
+    })();
+  </script>
+</body>
+</html>

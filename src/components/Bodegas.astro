@@ -1,0 +1,22 @@
+---
+// 3 · LAS BODEGAS — renderizadas en build desde los datos
+import { BODEGAS } from '../data/bodegas.js';
+---
+<section class="section bodegas" id="bodegas">
+  <div class="container">
+    <div class="section__head">
+      <span class="eyebrow">Las bodegas</span>
+      <h2>Quiénes hacen nuestros vinos</h2>
+      <p>Tres orígenes, una misma búsqueda: vinos honestos, de lugar y de gente.</p>
+    </div>
+    <div class="bodegas__grid" id="bodegas-grid">
+      {BODEGAS.map((b) => (
+        <article class="bodega-card">
+          <span class="bodega-card__lugar">{b.lugar}</span>
+          <h3 class="bodega-card__nombre">{b.nombre}</h3>
+          <p class="bodega-card__texto">{b.historia}</p>
+        </article>
+      ))}
+    </div>
+  </div>
+</section>

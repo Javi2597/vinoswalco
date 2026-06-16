@@ -1,0 +1,166 @@
+---
+import Layout from '../layouts/Layout.astro';
+import EdadGate from '../components/EdadGate.astro';
+import Header from '../components/Header.astro';
+import Hero from '../components/Hero.astro';
+import Historia from '../components/Historia.astro';
+import Bodegas from '../components/Bodegas.astro';
+import Vinos from '../components/Vinos.astro';
+import Origen from '../components/Origen.astro';
+import Comprar from '../components/Comprar.astro';
+import Contacto from '../components/Contacto.astro';
+import Footer from '../components/Footer.astro';
+import Modal from '../components/Modal.astro';
+import WhatsAppFlotante from '../components/WhatsAppFlotante.astro';
+
+import { VINOS } from '../data/vinos.js';
+import { BODEGAS } from '../data/bodegas.js';
+import { CONTACTO } from '../data/site.js';
+---
+<Layout>
+  <EdadGate />
+  <Header />
+  <main>
+    <Hero />
+    <Historia />
+    <Bodegas />
+    <Vinos />
+    <Origen />
+    <Comprar />
+    <Contacto />
+  </main>
+  <Footer />
+  <Modal />
+  <WhatsAppFlotante />
+</Layout>
+
+<script define:vars={{ VINOS, BODEGAS, CONTACTO }}>
+  /* =========================================================
+     VINOS WALCO — interactividad de cliente
+     (los datos llegan inyectados desde Astro vía define:vars)
+     ========================================================= */
+  const waLink = (texto) =>
+    `https://wa.me/${CONTACTO.whatsapp}?text=${encodeURIComponent(texto)}`;
+  const nombreBodega = (id) => (BODEGAS.find((b) => b.id === id) || {}).nombre || "";
+
+  /* ---- Gate de edad (sessionStorage) ---- */
+  (function () {
+    const gate = document.getElementById("edad-gate");
+    if (!gate) return;
+    if (location.search.indexOf("skipgate") !== -1 || sessionStorage.getItem("walco_edad") === "ok") {
+      gate.remove();
+    } else {
+      document.body.classList.add("no-scroll");
+    }
+    const si = document.getElementById("edad-si");
+    if (si) {
+      si.addEventListener("click", () => {
+        sessionStorage.setItem("walco_edad", "ok");
+        gate.classList.add("is-hidden");
+        document.body.classList.remove("no-scroll");
+        setTimeout(() => gate.remove(), 400);
+      });
+    }
+  })();
+
+  /* ---- Filtros del catálogo (muestra/oculta cards, sin re-render) ---- */
+  (function () {
+    const cont = document.getElementById("filtros");
+    const grid = document.getElementById("vinos-grid");
+    if (!cont || !grid) return;
+    const cards = Array.from(grid.querySelectorAll(".vino-card"));
+    cont.addEventListener("click", (e) => {
+      const btn = e.target.closest(".filtro");
+      if (!btn) return;
+      cont.querySelectorAll(".filtro").forEach((b) => b.classList.remove("is-active"));
+      btn.classList.add("is-active");
+      const id = btn.dataset.bodega;
+      cards.forEach((c) => {
+        const visible = id === "todos" || c.dataset.bodega === id;
+        c.classList.toggle("is-hidden", !visible);
+      });
+    });
+  })();
+
+  /* ---- Modal de ficha ---- */
+  const modalEl = document.getElementById("modal");
+  let ultimoFoco = null;
+
+  function abrirModal(id) {
+    const v = VINOS.find((x) => x.id === id);
+    if (!v) return;
+    ultimoFoco = document.activeElement;
+    const filas = Object.entries(v.ficha)
+      .map(([k, val]) => `<div class="ficha__fila"><dt>${k}</dt><dd>${val}</dd></div>`)
+      .join("");
+    document.getElementById("modal-contenido").innerHTML = `
+      <button class="modal__cerrar" data-close aria-label="Cerrar">&times;</button>
+      <div class="modal__grid">
+        <div class="modal__img"><img src="${v.img}" alt="${v.nombre}"></div>
+        <div class="modal__info">
+          <span class="modal__bodega">${nombreBodega(v.bodega)}</span>
+          <h3 class="modal__nombre">${v.nombre}</h3>
+          <p class="modal__linea">${v.linea}${v.cosecha && v.cosecha !== "—" ? " · Cosecha " + v.cosecha : ""}</p>
+          <p class="modal__varietal">${v.varietal}</p>
+          <p class="modal__cata">${v.cata}</p>
+          <dl class="ficha">${filas}</dl>
+          <a class="btn btn--wa" href="${waLink("¡Hola! Quiero consultar por el vino " + v.nombre + " (" + nombreBodega(v.bodega) + ").")}" target="_blank" rel="noopener">
+            Consultar por WhatsApp
+          </a>
+        </div>
+      </div>`;
+    modalEl.classList.add("is-open");
+    document.body.style.overflow = "hidden";
+    modalEl.querySelector(".modal__cerrar").focus();
+  }
+
+  function cerrarModal() {
+    modalEl.classList.remove("is-open");
+    document.body.style.overflow = "";
+    if (ultimoFoco) ultimoFoco.focus();
+  }
+
+  if (modalEl) {
+    modalEl.addEventListener("click", (e) => {
+      if (e.target.dataset.close !== undefined) cerrarModal();
+    });
+    document.addEventListener("keydown", (e) => {
+      if (e.key === "Escape" && modalEl.classList.contains("is-open")) cerrarModal();
+    });
+  }
+
+  document.querySelectorAll(".vino-card").forEach((card) => {
+    const open = () => abrirModal(card.dataset.id);
+    card.addEventListener("click", open);
+    card.addEventListener("keydown", (e) => {
+      if (e.key === "Enter" || e.key === " ") {
+        e.preventDefault();
+        open();
+      }
+    });
+  });
+
+  /* ---- Navegación móvil + header al scrollear ---- */
+  (function () {
+    const toggle = document.getElementById("nav-toggle");
+    const menu = document.getElementById("nav-menu");
+    if (toggle && menu) {
+      toggle.addEventListener("click", () => {
+        const open = menu.classList.toggle("is-open");
+        toggle.setAttribute("aria-expanded", open);
+      });
+      menu.querySelectorAll("a").forEach((a) =>
+        a.addEventListener("click", () => {
+          menu.classList.remove("is-open");
+          toggle.setAttribute("aria-expanded", false);
+        })
+      );
+    }
+    const header = document.querySelector(".header");
+    if (header) {
+      window.addEventListener("scroll", () => {
+        header.classList.toggle("is-scrolled", window.scrollY > 40);
+      });
+    }
+  })();
+</script>

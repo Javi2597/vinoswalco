@@ -1,0 +1,28 @@
+---
+// 7 · CONTACTO — enlaces calculados en build
+import { CONTACTO, waLink, igLink, emailLink } from '../data/site.js';
+
+const wa = waLink('¡Hola Vinos Walco! Quiero hacer una consulta.');
+---
+<section class="section contacto" id="contacto">
+  <div class="container contacto__grid">
+    <div>
+      <span class="eyebrow">Contacto</span>
+      <h2>Hablemos</h2>
+      <p>Escribinos por el canal que prefieras y te respondemos a la brevedad.</p>
+      <ul class="contacto__lista">
+        <li><a class="contacto__item" href={wa} target="_blank" rel="noopener"><strong>WhatsApp</strong><span>Consultas y pedidos</span></a></li>
+        <li><a class="contacto__item" href={igLink} target="_blank" rel="noopener"><strong>Instagram</strong><span>@{CONTACTO.instagram}</span></a></li>
+        <li><a class="contacto__item" href={emailLink}><strong>Email</strong><span>{CONTACTO.email}</span></a></li>
+      </ul>
+    </div>
+    <form class="form" onsubmit="return false;">
+      <h3>Dejanos tu consulta</h3>
+      <label>Nombre<input type="text" name="nombre" required /></label>
+      <label>Email o teléfono<input type="text" name="contacto" required /></label>
+      <label>Mensaje<textarea name="mensaje" rows="4" required></textarea></label>
+      <button class="btn" type="submit">Enviar consulta</button>
+      <small class="form__nota">El formulario se conectará en la etapa final. Por ahora usá WhatsApp.</small>
+    </form>
+  </div>
+</section>

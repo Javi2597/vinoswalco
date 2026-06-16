@@ -1,0 +1,28 @@
+---
+// 6 · CÓMO COMPRAR
+import { waLink } from '../data/site.js';
+
+const wa = waLink('¡Hola Vinos Walco! Quiero hacer una consulta.');
+const pasos = [
+  { n: '1', h: 'Elegí tus vinos', p: 'Mirá el catálogo y elegí tus etiquetas favoritas.' },
+  { n: '2', h: 'Escribinos', p: 'Consultá disponibilidad y precios por WhatsApp. Te asesoramos en la elección.' },
+  { n: '3', h: 'Coordinamos el envío', p: 'Acordamos forma de pago y entrega. Consultá zonas de envío.' },
+];
+---
+<section class="section comprar" id="comprar">
+  <div class="container">
+    <div class="section__head">
+      <span class="eyebrow">Cómo comprar</span>
+      <h2>Llevá nuestros vinos a tu mesa</h2>
+    </div>
+    <div class="pasos">
+      {pasos.map((p) => (
+        <div class="paso"><span class="paso__num">{p.n}</span><h3>{p.h}</h3><p>{p.p}</p></div>
+      ))}
+    </div>
+    <div class="comprar__cta">
+      <a class="btn btn--wa" href={wa} target="_blank" rel="noopener">Consultar por WhatsApp</a>
+      <p class="comprar__aviso">Venta exclusiva a mayores de 18 años. Beber con moderación.</p>
+    </div>
+  </div>
+</section>

@@ -1,0 +1,164 @@
+============================================================
+PIXELFORGE — ROADMAP PROYECTO 2
+Vinos Walco — de Altura
+============================================================
+Cliente: Pareja de mamá de Javi
+Tipo: Portfolio / Pro bono
+Fecha de inicio: Pendiente (bloqueado en Fase 0)
+Stack: HTML/CSS/JS — Vercel — Sin Google Sheets
+------------------------------------------------------------
+
+RESUMEN DEL PROYECTO
+------------------------------------------------------------
+Web catálogo para Vinos Walco, emprendimiento familiar que
+comercializa vinos de altura del norte de Argentina.
+Trabajan con comunidades originarias, cooperativas, bodegas
+y fincas. Venta directa sin intermediarios.
+
+Enfoque dual: catálogo de productos + storytelling fuerte
+sobre el origen, las bodegas y el concepto "de autor".
+Sin ecommerce — contacto para compra por WhatsApp o
+formulario. Cambios los maneja Javi directamente.
+
+BODEGAS ASOCIADAS:
+  - Bodega Comunitaria "Los Amaichás" (Valle Calchaquí,
+    Tucumán) — 1° bodega del país perteneciente a una
+    comunidad originaria. Identidad diaguita. 40 productores.
+    Fermentación con levaduras nativas.
+  - Bodega Mi Changu
+  - Bodega María del Pilar
+
+VINOS IDENTIFICADOS:
+  - Sumak Kawsay Criolla
+    Cata: Muy aromático, frutas rojas (fresas), dátiles,
+    rosas secas, notas picantes. Rústico, alta calidad.
+  - Sumak Kawsay Malbec
+    Cata: Intensamente aromático, cereza, frutos secos,
+    grafito, notas de miel y chocolate.
+  (Sumak Kawsay = "Saber vivir" en lengua Kakán)
+
+
+============================================================
+FASE 0 — DEFINICIÓN
+============================================================
+
+[x] Nombre confirmado → VINOS WALCO
+[x] Dominio vinoswalco.com.ar → DISPONIBLE
+[ ] Conseguir logo o crear identidad visual desde cero
+[ ] Confirmar usuario de Instagram del proyecto → [FALTA]
+[x] Historia del proyecto → DISPONIBLE (ver notas arriba)
+[x] Descripción de vinos → DISPONIBLE (Criolla y Malbec)
+[ ] Organizar catálogo de fotos por bodega / vino
+[ ] Confirmar precios de cada vino
+[ ] Confirmar si hay más vinos además de los 2 identificados
+[ ] Definir zonas de envío y proceso de compra
+
+BLOQUEANTES PARA PASAR A FASE 1:
+  → Dominio chequeado en NIC.ar
+  → Logo o al menos paleta/estilo definido
+  → Fotos de los vinos y de las bodegas/paisajes del norte
+  → Precios confirmados
+
+
+============================================================
+FASE 1 — ESTRUCTURA Y DISEÑO
+============================================================
+
+SECCIONES PROPUESTAS:
+
+  #   Sección           Notas
+  --- ----------------- ------------------------------------
+  1   Inicio (Hero)     Foto de impacto + frase + CTA
+                        "Conocé los vinos"
+  2   Nuestra historia  Emprendimiento familiar, trabajo
+                        con comunidades y cooperativas,
+                        venta directa sin intermediarios
+  3   Las bodegas       Cards por bodega: Los Amaichás,
+                        Mi Changu, María del Pilar.
+                        Historia de cada una.
+  4   Los vinos         Catálogo: foto, nombre, varietal,
+                        notas de cata, precio
+  5   El origen         Valle Calchaquí, Tucumán, altura,
+                        levaduras nativas, identidad
+                        diaguita. Con fotos del lugar.
+  6   Cómo comprar      Proceso: contacto por WhatsApp,
+                        envíos, mayores de 18 años
+  7   Contacto          WhatsApp + Instagram + formulario
+
+Total: 7 secciones
+(Se agrega "Las bodegas" por la riqueza de contenido
+disponible — es un diferencial fuerte)
+
+TAREAS:
+[ ] Confirmar estructura con el cliente
+[ ] Definir estética visual
+    (oscura/elegante, evoca altura y raíces originarias)
+[ ] Definir si diseño va en Figma o directo en código
+
+
+============================================================
+FASE 2 — DESARROLLO
+============================================================
+
+[ ] Setup repositorio + Vercel
+[ ] Maquetado HTML/CSS/JS base
+[ ] Hero con foto de impacto y CTA
+[ ] Sección Nuestra historia
+[ ] Sección Las bodegas (cards por bodega)
+[ ] Catálogo de vinos (cards: foto, nombre, varietal,
+    notas de cata, precio)
+[ ] Sección El Origen con galería del norte
+[ ] Sección Cómo comprar (proceso + aviso +18)
+[ ] Sección Contacto con WhatsApp e Instagram
+[ ] SEO básico: meta tags, Open Graph, favicon
+[ ] Responsive mobile
+
+
+============================================================
+FASE 3 — CONTENIDO
+============================================================
+
+[x] Historia del emprendimiento → BORRADOR DISPONIBLE
+[x] Historia Bodega Los Amaichás → BORRADOR DISPONIBLE
+[x] Notas de cata Sumak Kawsay Criolla → DISPONIBLE
+[x] Notas de cata Sumak Kawsay Malbec → DISPONIBLE
+[ ] Redactar copy Hero (frase principal + subtítulo)
+[ ] Redactar texto "Nuestra historia" (pulir borrador)
+[ ] Redactar ficha completa de cada vino
+    (falta precio y maridaje sugerido)
+[ ] Redactar historia Bodega Mi Changu → [FALTA INFO]
+[ ] Redactar historia Bodega María del Pilar → [FALTA INFO]
+[ ] Redactar sección "El Origen" (pulir borrador)
+[ ] Redactar sección "Cómo comprar"
+[ ] Organizar y nombrar archivos de fotos por sección
+
+
+============================================================
+FASE 4 — REVISIÓN Y LANZAMIENTO
+============================================================
+
+[ ] Revisión interna Javi (round 1)
+[ ] Revisión del cliente (round 2)
+[ ] Ajustes finales (round 3 si hace falta)
+[ ] Deploy final en Vercel
+[ ] Dominio registrado en NIC.ar a nombre del cliente
+[ ] Alta en Google Search Console
+[ ] Conectar Instagram → [FALTA USUARIO]
+[ ] Foto del sitio live para portfolio de PixelForge
+
+------------------------------------------------------------
+POLÍTICA DE REVISIONES
+3 rondas incluidas. Ronda extra: $30 USD c/u.
+Una ronda = lote consolidado de cambios (no comentario
+por comentario). Cambios estructurales = alcance nuevo.
+------------------------------------------------------------
+
+PENDIENTES GLOBALES:
+  → [CHEQUEAR DOMINIO] vinoswalco.com.ar — DISPONIBLE, registrar a nombre del cliente
+  → Logo o identidad visual antes de Fase 1
+  → Fotos de vinos y bodegas antes de Fase 2
+  → Precios de los vinos → confirmar con el cliente
+  → Historia de Mi Changu y María del Pilar → [FALTA INFO]
+  → Usuario de Instagram → confirmar con el cliente
+
+============================================================
