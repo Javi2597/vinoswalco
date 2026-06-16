@@ -205,6 +205,75 @@ export const VINOS = [
     },
   },
   {
+    id: "andreatta-bonarda",
+    bodega: "michango",
+    nombre: "Andreatta Bonarda",
+    linea: "Tinto",
+    varietal: "100% Bonarda",
+    cosecha: "—",
+    img: "/img/botellas/michango-12-andreatta-bonarda-bottle.png",
+    cata:
+      "De color rojo rubí con tonalidades púrpuras. Aromas intensos a frutos " +
+      "del bosque maduros (moras, cassis y cerezas) con toques especiados. En " +
+      "boca su ataque es agradable y de buena intensidad.",
+    ficha: {
+      "Zona de cultivo": "Siján – Valle de Pomán – Catamarca",
+      "Altura del viñedo": "1000 mts",
+      "Edad del viñedo": "80 años",
+      "Producción viñedo": "5000 kg/ha",
+      "Producción anual": "3000 botellas",
+      "Enólogos": "Marcelo Moreno, Nicolás Rizza",
+      "Maridaje": "Carnes rojas asadas, cabrito a la llama, vegetales a la parrilla, pastas y comidas especiadas",
+    },
+  },
+  {
+    id: "andreatta-red-blend",
+    bodega: "michango",
+    nombre: "Andreatta Red Blend",
+    linea: "Tinto · Blend",
+    varietal: "Bonarda · Malbec · Syrah",
+    cosecha: "—",
+    img: "/img/botellas/michango-13-andreatta-redblend-bottle.png",
+    cata:
+      "De color rojo rubí con tonalidades violáceas y púrpuras. Aromas intensos " +
+      "a frutos rojos, con notas de café, vainilla y coco por su paso en madera, " +
+      "con leves notas especiadas. Buena acidez, equilibrado y de taninos " +
+      "agradables, muy buena intensidad.",
+    ficha: {
+      "Zona de cultivo": "Siján – Valle de Pomán – Catamarca",
+      "Altura del viñedo": "1000 mts",
+      "Edad del viñedo": "80 años",
+      "Producción viñedo": "5000 kg/ha",
+      "Producción anual": "2000 botellas",
+      "Enólogos": "Marcelo Moreno, Nicolás Rizza",
+      "Maridaje": "Carnes rojas y de caza, pastas y comidas picantes",
+    },
+  },
+  {
+    id: "andreatta-rose",
+    bodega: "michango",
+    nombre: "Andreatta Torrontés Rosé",
+    linea: "Rosado",
+    varietal: "100% Torrontés",
+    cosecha: "—",
+    img: "/img/botellas/michango-14-andreatta-rose-bottle.png",
+    cata:
+      "De color rosa claro con leves tonos cereza, producto de una breve " +
+      "maceración sobre orujos de Malbec sin prensar. De aromas frescos y " +
+      "florales típicos del Torrontés que se entrelazan con aromas a frutos " +
+      "rojos. En boca es muy vivaz, amable, de una equilibrada y sutil acidez.",
+    ficha: {
+      "Zona de cultivo": "Siján – Valle de Pomán – Catamarca",
+      "Elaboración": "Maceración en frío sobre orujos de Malbec durante dos horas",
+      "Altura del viñedo": "1000 mts",
+      "Edad del viñedo": "80 años",
+      "Producción viñedo": "7000 kg/ha",
+      "Producción anual": "2000 botellas",
+      "Enólogos": "Marcelo Moreno, Nicolás Rizza",
+      "Maridaje": "Pescados, frutos de mar, pastas livianas y picadas. Ideal para compartir en reuniones con amigos",
+    },
+  },
+  {
     id: "sumak-criolla",
     bodega: "losamaichas",
     nombre: "Sumak Kawsay Criolla",
