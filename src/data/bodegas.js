@@ -23,8 +23,8 @@ export const BODEGAS = [
       "En el Valle de Pomán, localidad de Siján, Provincia de Catamarca, se " +
       "encuentra El Manchao, un majestuoso cerro que conecta al cielo en su " +
       "punto máximo a 4561 metros sobre el nivel del mar con el lugar exacto, " +
-      "en su base, donde hace más de cien años, nuestra familia dio inicio a " +
-      "una dinastía de agricultores que continúan evolucionando.\n\n" +
+      "en su base, donde hace más de cien años una familia dio inicio a " +
+      "una dinastía de agricultores que aún hoy continúa evolucionando.\n\n" +
       "El nombre del Cerro El Manchao proviene de la lengua aborigen Kakán y " +
       "significa lugar de miedo.",
     estado: "ok",
@@ -34,10 +34,14 @@ export const BODEGAS = [
     nombre: "Finca María del Pilar",
     lugar: "Beltrán · Santiago del Estero",
     historia:
-      "Bodega santiagueña cuyo concepto “Legado de la primera vid” da nombre a " +
-      "su familia de etiquetas de autor, sobre suelos franco arenosos y cosecha " +
-      "manual. [Texto provisional — falta historia oficial.]",
-    estado: "falta-info",
+      "El alma del vino en Santiago del Estero.\n\n" +
+      "Ubicada en el corazón de Santiago del Estero, Finca María del Pilar nace " +
+      "con la misión de recuperar y fortalecer la tradición vitivinícola en una " +
+      "tierra donde la historia y la pasión se entrelazan. Con viñedos que " +
+      "desafían el clima árido de la región, la bodega ha perfeccionado el arte " +
+      "de crear vinos auténticos, con una identidad única que refleja el " +
+      "carácter noble y la riqueza cultural de la provincia.",
+    estado: "ok",
   },
 ];
 
