@@ -193,25 +193,14 @@ h3{font-size:1.5rem}
 .comprar__aviso{color:var(--muted);font-size:.82rem;margin-top:16px}
 
 /* ---- Contacto ---- */
-.contacto__grid{display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:start}
-.contacto__grid h2{margin:6px 0 16px}
-.contacto__grid > div > p{color:var(--muted);margin-bottom:28px}
-.contacto__lista{list-style:none;display:flex;flex-direction:column;gap:14px}
+.contacto__solo{max-width:520px;margin:0 auto;text-align:center}
+.contacto__solo h2{margin:6px 0 16px}
+.contacto__solo > p{color:var(--muted);margin-bottom:28px}
+.contacto__lista{list-style:none;display:flex;flex-direction:column;gap:14px;text-align:left}
 .contacto__item{display:flex;flex-direction:column;padding:18px 22px;background:var(--bg-3);border:1px solid var(--line);border-radius:var(--r);transition:.25s}
 .contacto__item:hover{border-color:var(--gold);transform:translateX(4px)}
 .contacto__item strong{color:var(--gold-soft);font-weight:500;letter-spacing:.04em}
 .contacto__item span{color:var(--muted);font-size:.88rem}
-
-.form{background:var(--bg-3);border:1px solid var(--line);border-radius:var(--r);padding:34px}
-.form h3{margin-bottom:22px}
-.form label{display:block;margin-bottom:16px;font-size:.85rem;color:var(--muted);letter-spacing:.04em}
-.form input,.form textarea{
-  width:100%;margin-top:7px;background:var(--bg);border:1px solid var(--line);
-  border-radius:9px;padding:12px 14px;color:var(--text);font-family:var(--sans);font-size:.95rem;resize:vertical;
-}
-.form input:focus,.form textarea:focus{outline:none;border-color:var(--gold)}
-.form .btn{width:100%;margin-top:6px}
-.form__nota{display:block;margin-top:14px;color:var(--muted);font-size:.76rem;text-align:center}
 
 /* ---- Footer ---- */
 .footer{background:#120a0c;padding:46px 0;border-top:1px solid var(--line)}
@@ -271,7 +260,7 @@ h3{font-size:1.5rem}
 
 /* ---- Responsive ---- */
 @media(max-width:980px){
-  .historia__grid,.contacto__grid{grid-template-columns:1fr;gap:40px}
+  .historia__grid{grid-template-columns:1fr;gap:40px}
   .bodegas__grid,.pasos{grid-template-columns:1fr}
   .vinos__grid{grid-template-columns:repeat(2,1fr)}
   .modal__grid{grid-template-columns:1fr}
