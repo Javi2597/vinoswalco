@@ -12,7 +12,7 @@ export const VINOS = [
     linea: "Joven · Marselan",
     varietal: "95% Marselan · 5% Syrah",
     cosecha: "2023",
-    img: "/img/botellas/mariadelpilar-01-enraizado-bottle.jpg",
+    img: "/img/botellas/mariadelpilar-01-enraizado-bottle.png",
     cata:
       "Profundo color rojo. Potente aroma que conjuga frutos rojos, mineral y " +
       "eucalipto. Suave al paladar, con final intenso y prolongado. Gran " +
@@ -35,7 +35,7 @@ export const VINOS = [
     linea: "Joven · Blend",
     varietal: "50% Malbec · 35% Petit Verdot · 15% Syrah",
     cosecha: "2023",
-    img: "/img/botellas/mariadelpilar-02-quilla-bottle.jpg",
+    img: "/img/botellas/mariadelpilar-02-quilla-bottle.png",
     cata:
       "Color rojo rubí, límpido y brillante. Notas de cereza, frutilla y " +
       "frambuesa, entrada dulce y untuosa, acidez marcada que realza su " +
@@ -57,7 +57,7 @@ export const VINOS = [
     linea: "Reserva · Blend",
     varietal: "50% Malbec · 30% Petit Verdot · 10% Cabernet Sauvignon · 10% Marselan",
     cosecha: "2022",
-    img: "/img/botellas/mariadelpilar-03-laconquista-bottle.jpg",
+    img: "/img/botellas/mariadelpilar-03-laconquista-bottle.png",
     cata:
       "Color rojo violáceo intenso. En nariz, equilibrio entre vino y madera: " +
       "cereza negra, guinda, ciruela, mora y una puntita de pimiento ahumado " +
@@ -103,7 +103,7 @@ export const VINOS = [
     linea: "Reserva · Petit Verdot",
     varietal: "95% Petit Verdot · 5% Marselan",
     cosecha: "2022",
-    img: "/img/botellas/mariadelpilar-05-lacanonizacion-bottle.jpg",
+    img: "/img/botellas/mariadelpilar-05-lacanonizacion-bottle.png",
     cata:
       "Color rojo profundo con tonos violáceos. Aroma complejo, intenso a " +
       "frutos rojos y negros —ciruela, moras, arándanos— y notas especiadas: " +
