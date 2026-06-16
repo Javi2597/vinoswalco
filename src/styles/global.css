@@ -140,7 +140,7 @@ h3{font-size:1.5rem}
 .bodega-card:hover{transform:translateY(-6px);border-color:rgba(201,162,75,.5)}
 .bodega-card__lugar{font-size:.74rem;letter-spacing:.18em;text-transform:uppercase;color:var(--terra)}
 .bodega-card__nombre{margin:12px 0 16px;color:var(--text)}
-.bodega-card__texto{color:var(--muted);font-size:.95rem}
+.bodega-card__texto{color:var(--muted);font-size:.95rem;white-space:pre-line}
 
 /* ---- Filtros ---- */
 .filtros{display:flex;gap:12px;justify-content:center;flex-wrap:wrap;margin-bottom:44px}

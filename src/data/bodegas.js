@@ -20,10 +20,14 @@ export const BODEGAS = [
     nombre: "Bodega Michango",
     lugar: "Siján · Valle de Pomán · Catamarca",
     historia:
-      "Bodega catamarqueña que cultiva en el Valle de Pomán, a 1000 metros de " +
-      "altura, con viñedos de 80 años. Su línea Andreatta reúne blancos frescos " +
-      "y tintos de carácter. [Texto provisional — falta historia oficial.]",
-    estado: "falta-info",
+      "En el Valle de Pomán, localidad de Siján, Provincia de Catamarca, se " +
+      "encuentra El Manchao, un majestuoso cerro que conecta al cielo en su " +
+      "punto máximo a 4561 metros sobre el nivel del mar con el lugar exacto, " +
+      "en su base, donde hace más de cien años, nuestra familia dio inicio a " +
+      "una dinastía de agricultores que continúan evolucionando.\n\n" +
+      "El nombre del Cerro El Manchao proviene de la lengua aborigen Kakán y " +
+      "significa lugar de miedo.",
+    estado: "ok",
   },
   {
     id: "mariadelpilar",
