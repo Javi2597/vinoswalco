@@ -165,7 +165,7 @@ h3{font-size:1.5rem}
 .vino-card__img img{max-width:100%;max-height:100%;width:auto;height:auto;object-fit:contain;transition:.4s}
 .vino-card:hover .vino-card__img img{transform:translateY(-4px)}
 .vino-card__body{padding:20px;display:flex;flex-direction:column;gap:6px;flex:1}
-.vino-card__bodega{font-size:.7rem;letter-spacing:.14em;text-transform:uppercase;color:var(--terra)}
+.vino-card__bodega{font-size:.78rem;letter-spacing:.1em;text-transform:uppercase;color:var(--gold-soft);font-weight:600}
 .vino-card__nombre{font-size:1.3rem}
 .vino-card__varietal{color:var(--muted);font-size:.85rem;flex:1}
 .vino-card__ver{color:var(--gold);font-size:.82rem;letter-spacing:.06em;margin-top:6px}
