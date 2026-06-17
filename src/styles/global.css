@@ -280,16 +280,16 @@ h3{font-size:1.5rem}
     flex-direction:column;align-items:flex-start;gap:8px;
     background:var(--bg-2);padding:96px 32px;transition:.35s;box-shadow:-10px 0 40px rgba(0,0,0,.5);
   }
-  /* Cierre flotante centrado, siempre visible al scrollear la ficha. */
+  /* Cierre flotante en la esquina superior derecha, siempre visible al scrollear la ficha. */
   .modal__cerrar{display:none}
   .modal__cerrar-mobile{
     display:grid;place-items:center;
-    position:absolute;top:14px;left:50%;transform:translateX(-50%);z-index:6;
+    position:absolute;top:14px;right:14px;z-index:6;
     width:44px;height:44px;border-radius:50%;border:none;cursor:pointer;
     background:rgba(20,11,14,.72);color:var(--gold-soft);backdrop-filter:blur(4px);
     font-size:2rem;line-height:1;padding:0 0 4px;box-shadow:0 6px 18px rgba(0,0,0,.45);
   }
-  .modal__cerrar-mobile:active{transform:translateX(-50%) scale(.92)}
+  .modal__cerrar-mobile:active{transform:scale(.92)}
   .nav__menu.is-open{right:0}
   .nav__menu li{width:100%}
   .nav__menu a{display:block;padding:12px 0;font-size:1.05rem;width:100%}
