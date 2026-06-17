@@ -12,9 +12,14 @@ import { BODEGAS } from '../data/bodegas.js';
     <div class="bodegas__grid" id="bodegas-grid">
       {BODEGAS.map((b) => (
         <article class="bodega-card">
-          <span class="bodega-card__lugar">{b.lugar}</span>
-          <h3 class="bodega-card__nombre">{b.nombre}</h3>
-          <p class="bodega-card__texto">{b.historia}</p>
+          <div class="bodega-card__img">
+            <img src={b.img} alt={b.nombre} loading="lazy" style={b.imgPos ? `object-position:${b.imgPos}` : undefined} />
+          </div>
+          <div class="bodega-card__body">
+            <span class="bodega-card__lugar">{b.lugar}</span>
+            <h3 class="bodega-card__nombre">{b.nombre}</h3>
+            <p class="bodega-card__texto">{b.historia}</p>
+          </div>
         </article>
       ))}
     </div>

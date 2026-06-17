@@ -7,6 +7,7 @@ export const BODEGAS = [
     id: "losamaichas",
     nombre: "Bodega Comunitaria Los Amaichás",
     lugar: "Valle Calchaquí · Tucumán",
+    img: "/img/bodegas/bodegalosamaichas.jpeg",
     historia:
       "La primera bodega del país perteneciente a una comunidad originaria. " +
       "Con identidad diaguita y más de 40 productores, elaboran sus vinos de " +
@@ -19,6 +20,8 @@ export const BODEGAS = [
     id: "michango",
     nombre: "Bodega Michango",
     lugar: "Siján · Valle de Pomán · Catamarca",
+    img: "/img/bodegas/bodegamichango.jpeg",
+    imgPos: "center 22%",
     historia:
       "En el Valle de Pomán, localidad de Siján, Provincia de Catamarca, se " +
       "encuentra El Manchao, un majestuoso cerro que conecta al cielo en su " +
@@ -33,6 +36,7 @@ export const BODEGAS = [
     id: "mariadelpilar",
     nombre: "Finca María del Pilar",
     lugar: "Beltrán · Santiago del Estero",
+    img: "/img/bodegas/fincamariadelpilar.jpg",
     historia:
       "El alma del vino en Santiago del Estero.\n\n" +
       "Ubicada en el corazón de Santiago del Estero, Finca María del Pilar nace " +
