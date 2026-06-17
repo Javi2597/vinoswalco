@@ -185,6 +185,25 @@ h3{font-size:1.5rem}
 .origen__content p{color:var(--muted);font-size:1.08rem}
 .origen__nota{margin-top:28px;color:var(--terra);font-size:.9rem;font-style:italic}
 
+/* ---- Carrusel del origen ---- */
+.carrusel{position:relative;width:100%;max-width:760px;margin:44px auto 0}
+.carrusel__viewport{overflow:hidden;border-radius:var(--r);border:1px solid var(--line);box-shadow:0 22px 50px rgba(0,0,0,.5)}
+.carrusel__track{display:flex;transition:transform .55s cubic-bezier(.4,0,.2,1)}
+.carrusel__slide{min-width:100%;aspect-ratio:3/2;background:#0c0709}
+.carrusel__slide img{width:100%;height:100%;object-fit:cover;display:block}
+.carrusel__btn{position:absolute;top:50%;transform:translateY(-50%);z-index:2;
+  width:46px;height:46px;border-radius:50%;border:none;cursor:pointer;
+  background:rgba(20,11,14,.6);color:var(--gold-soft);backdrop-filter:blur(4px);
+  font-size:1.6rem;line-height:1;display:grid;place-items:center;transition:.2s}
+.carrusel__btn:hover{background:var(--wine);color:#fff}
+.carrusel__btn:active{transform:translateY(-50%) scale(.92)}
+.carrusel__btn--prev{left:12px;padding-right:3px}
+.carrusel__btn--next{right:12px;padding-left:3px}
+.carrusel__dots{display:flex;gap:9px;justify-content:center;margin-top:18px;flex-wrap:wrap}
+.carrusel__dot{width:9px;height:9px;padding:0;border:none;border-radius:50%;cursor:pointer;
+  background:rgba(224,200,137,.3);transition:.25s}
+.carrusel__dot.is-active{background:var(--gold);transform:scale(1.25)}
+
 /* ---- Cómo comprar ---- */
 .comprar{background:var(--bg-2)}
 .pasos{display:grid;grid-template-columns:repeat(3,1fr);gap:26px;margin-bottom:48px}

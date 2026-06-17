@@ -1,5 +1,9 @@
 ---
 // 5 · EL ORIGEN
+const imagenes = Array.from(
+  { length: 10 },
+  (_, i) => `/img/carrusel/origen-${String(i + 1).padStart(2, '0')}.jpeg`
+);
 ---
 <section class="section origen" id="origen">
   <div class="origen__bg"></div>
@@ -7,6 +11,63 @@
     <span class="eyebrow eyebrow--light">El origen</span>
     <h2>Vinos que nacen en la altura</h2>
     <p>Del Valle Calchaquí en Tucumán al Valle de Pomán en Catamarca y los suelos franco arenosos de Santiago del Estero: viñedos de altura, levaduras nativas e identidad diaguita. Una forma de hacer vino que respeta la tierra y los métodos transmitidos por generaciones.</p>
-    <p class="origen__nota">📸 Galería de paisajes del norte — próximamente.</p>
+
+    <div class="carrusel" aria-label="Galería de paisajes del norte">
+      <div class="carrusel__viewport">
+        <div class="carrusel__track">
+          {imagenes.map((src, i) => (
+            <div class="carrusel__slide">
+              <img src={src} alt={`Paisaje del norte ${i + 1}`} loading="lazy" />
+            </div>
+          ))}
+        </div>
+      </div>
+      <button class="carrusel__btn carrusel__btn--prev" aria-label="Imagen anterior">&#8249;</button>
+      <button class="carrusel__btn carrusel__btn--next" aria-label="Imagen siguiente">&#8250;</button>
+      <div class="carrusel__dots">
+        {imagenes.map((_, i) => (
+          <button class={`carrusel__dot ${i === 0 ? 'is-active' : ''}`} aria-label={`Ir a la imagen ${i + 1}`}></button>
+        ))}
+      </div>
+    </div>
   </div>
 </section>
+
+<script>
+  function initCarrusel(root) {
+    const track = root.querySelector('.carrusel__track');
+    const slides = Array.from(track.children);
+    const dots = Array.from(root.querySelectorAll('.carrusel__dot'));
+    let i = 0;
+    let timer;
+
+    const go = (n) => {
+      i = (n + slides.length) % slides.length;
+      track.style.transform = `translateX(-${i * 100}%)`;
+      dots.forEach((d, di) => d.classList.toggle('is-active', di === i));
+    };
+    const start = () => { timer = setInterval(() => go(i + 1), 5000); };
+    const reset = () => { clearInterval(timer); start(); };
+
+    root.querySelector('.carrusel__btn--prev').addEventListener('click', () => { go(i - 1); reset(); });
+    root.querySelector('.carrusel__btn--next').addEventListener('click', () => { go(i + 1); reset(); });
+    dots.forEach((d, di) => d.addEventListener('click', () => { go(di); reset(); }));
+
+    root.addEventListener('mouseenter', () => clearInterval(timer));
+    root.addEventListener('mouseleave', start);
+
+    let x0 = null;
+    root.addEventListener('touchstart', (e) => { x0 = e.touches[0].clientX; }, { passive: true });
+    root.addEventListener('touchend', (e) => {
+      if (x0 === null) return;
+      const dx = e.changedTouches[0].clientX - x0;
+      if (Math.abs(dx) > 40) { go(dx < 0 ? i + 1 : i - 1); reset(); }
+      x0 = null;
+    });
+
+    go(0);
+    start();
+  }
+
+  document.querySelectorAll('.carrusel').forEach(initCarrusel);
+</script>
