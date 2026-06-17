@@ -312,4 +312,25 @@ export const VINOS = [
       "Elaboración": "Tradicional, sin filtrar ni refinar",
     },
   },
+  {
+    id: "amay-malbec",
+    bodega: "losamaichas",
+    nombre: "Amay Malbec",
+    linea: "Tinto · vino de altura",
+    varietal: "100% Malbec",
+    cosecha: "2024",
+    img: "/img/botellas/losamaichas-15-amay-malbec-bottle.png",
+    cata:
+      "Vino de altura de los Valles Calchaquíes (Tucumán), con marcada " +
+      "concentración, color intenso y excelente estructura gracias a su origen " +
+      "a más de 2.000 msnm.",
+    ficha: {
+      "Viñedo": "La Aguadita – Amaicha del Valle – Tucumán",
+      "Altura del viñedo": "Más de 2.000 msnm",
+      "Vinificación": "Cosecha manual y parcelaria; fermentación con levaduras nativas del valle",
+      "Crianza": "Conservación en entorno de temperatura controlada naturalmente (construcción en piedra)",
+      "Producción": "Limitada (producción artesanal de escala comunitaria)",
+      "Elaboración": "Tradicional, orientada a preservar la identidad del terruño y la sustentabilidad",
+    },
+  },
 ];
