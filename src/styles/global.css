@@ -63,6 +63,9 @@ h3{font-size:1.5rem}
 .btn--ghost{background:transparent;border:1px solid var(--gold);color:var(--gold-soft);box-shadow:none}
 .btn--ghost:hover{background:rgba(201,162,75,.1)}
 .btn--wa{background:linear-gradient(135deg,#1faf54,#128c43);box-shadow:0 8px 22px rgba(18,140,67,.35)}
+.btn--share{display:inline-flex;align-items:center;gap:8px;background:transparent;border:1px solid var(--gold);color:var(--gold-soft);box-shadow:none}
+.btn--share:hover{background:rgba(201,162,75,.1);box-shadow:none}
+.btn--share svg{display:block}
 
 /* ---- Gate de edad ---- */
 .edad{
@@ -267,6 +270,22 @@ h3{font-size:1.5rem}
 .ficha__fila{display:grid;grid-template-columns:140px 1fr;gap:14px;padding:11px 0;border-bottom:1px solid var(--line)}
 .ficha__fila dt{color:var(--gold-soft);font-size:.8rem;letter-spacing:.04em;text-transform:uppercase}
 .ficha__fila dd{color:var(--muted);font-size:.92rem}
+/* ---- Acciones de la ficha (WhatsApp + Compartir) ---- */
+.modal__acciones{display:flex;align-items:center;gap:12px;flex-wrap:wrap}
+.share{position:relative}
+.share__menu{
+  position:absolute;bottom:calc(100% + 10px);left:0;z-index:5;min-width:200px;
+  display:flex;flex-direction:column;padding:6px;
+  background:var(--bg-2);border:1px solid var(--line);border-radius:12px;
+  box-shadow:0 16px 38px rgba(0,0,0,.5);animation:pop .2s ease;
+}
+.share__menu[hidden]{display:none}
+.share__op{
+  display:block;width:100%;text-align:left;text-decoration:none;cursor:pointer;
+  padding:10px 12px;border:none;border-radius:8px;background:none;
+  color:var(--text);font-family:var(--sans);font-size:.9rem;transition:.2s;
+}
+.share__op:hover{background:rgba(201,162,75,.1);color:var(--gold-soft)}
 
 /* ---- Botón flotante de WhatsApp ---- */
 .wa-float{
@@ -309,6 +328,11 @@ h3{font-size:1.5rem}
     font-size:2rem;line-height:1;padding:0 0 4px;box-shadow:0 6px 18px rgba(0,0,0,.45);
   }
   .modal__cerrar-mobile:active{transform:scale(.92)}
+  /* En móvil: WhatsApp centrado y Compartir debajo, también centrado. */
+  .modal__acciones{flex-direction:column;align-items:center;gap:14px}
+  .modal__acciones .btn{text-align:center}
+  .share{display:flex;justify-content:center}
+  .share__menu{left:50%;transform:translateX(-50%);animation:none}
   .nav__menu.is-open{right:0}
   .nav__menu li{width:100%}
   .nav__menu a{display:block;padding:12px 0;font-size:1.05rem;width:100%}

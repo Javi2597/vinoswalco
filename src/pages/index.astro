@@ -104,6 +104,42 @@ import { CONTACTO } from '../data/site.js';
     abrirModal(lista[i]);
   }
 
+  // Pre-descarga la imagen de la botella como archivo para poder adjuntarla
+  // al compartir de forma nativa sin perder el "gesto de usuario" en el click.
+  let archivoActual = null;
+  function prefetchImagen(v) {
+    archivoActual = null;
+    fetch(v.img)
+      .then((r) => r.blob())
+      .then((b) => {
+        archivoActual = new File([b], v.id + ".png", { type: b.type || "image/png" });
+      })
+      .catch(() => {});
+  }
+
+  // Compartir: usa la API nativa (con imagen de la botella) si existe; si no,
+  // despliega el menú de redes como alternativa.
+  function manejarCompartir(btn) {
+    const v = VINOS.find((x) => x.id === vinoActualId);
+    if (!v) return;
+    const url = location.origin + location.pathname + "#vinos";
+    const texto = `${v.nombre} — ${nombreBodega(v.bodega)} (${v.varietal}). Conocé este vino de Vinos Walco:`;
+    const datos = { title: "Vinos Walco · " + v.nombre, text: texto, url };
+    if (archivoActual && navigator.canShare && navigator.canShare({ files: [archivoActual] })) {
+      navigator.share({ ...datos, files: [archivoActual] }).catch(() => {});
+      return;
+    }
+    if (navigator.share) {
+      navigator.share(datos).catch(() => {});
+      return;
+    }
+    const menu = btn.parentElement.querySelector("[data-share-menu]");
+    if (!menu) return;
+    const abierto = menu.hidden;
+    menu.hidden = !abierto;
+    btn.setAttribute("aria-expanded", String(abierto));
+  }
+
   function abrirModal(id) {
     const v = VINOS.find((x) => x.id === id);
     if (!v) return;
@@ -113,6 +149,12 @@ import { CONTACTO } from '../data/site.js';
     const filas = Object.entries(v.ficha)
       .map(([k, val]) => `<div class="ficha__fila"><dt>${k}</dt><dd>${val}</dd></div>`)
       .join("");
+    // Datos para compartir en redes (enlace a la sección de vinos + descripción del vino).
+    const compartirUrl = location.origin + location.pathname + "#vinos";
+    const compartirTxt = `${v.nombre} — ${nombreBodega(v.bodega)} (${v.varietal}). Conocé este vino de Vinos Walco:`;
+    const cu = encodeURIComponent(compartirUrl);
+    const ct = encodeURIComponent(compartirTxt);
+    const ctu = encodeURIComponent(compartirTxt + " " + compartirUrl);
     document.getElementById("modal-contenido").innerHTML = `
       <button class="modal__cerrar" data-close aria-label="Cerrar">&times;</button>
       <div class="modal__grid">
@@ -128,14 +170,30 @@ import { CONTACTO } from '../data/site.js';
           <p class="modal__varietal">${v.varietal}</p>
           <p class="modal__cata">${v.cata}</p>
           <dl class="ficha">${filas}</dl>
-          <a class="btn btn--wa" href="${waLink("¡Hola! Quiero consultar por el vino " + v.nombre + " (" + nombreBodega(v.bodega) + ").")}" target="_blank" rel="noopener">
-            Consultar por WhatsApp
-          </a>
+          <div class="modal__acciones">
+            <a class="btn btn--wa" href="${waLink("¡Hola! Quiero consultar por el vino " + v.nombre + " (" + nombreBodega(v.bodega) + ").")}" target="_blank" rel="noopener">
+              Consultar por WhatsApp
+            </a>
+            <div class="share">
+              <button class="btn btn--share" type="button" data-share aria-haspopup="true" aria-expanded="false">
+                <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><line x1="8.6" y1="13.5" x2="15.4" y2="17.5"/><line x1="15.4" y1="6.5" x2="8.6" y2="10.5"/></svg>
+                Compartir
+              </button>
+              <div class="share__menu" data-share-menu hidden>
+                <a class="share__op" href="https://www.facebook.com/sharer/sharer.php?u=${cu}" target="_blank" rel="noopener">Facebook</a>
+                <a class="share__op" href="https://twitter.com/intent/tweet?url=${cu}&text=${ct}" target="_blank" rel="noopener">X (Twitter)</a>
+                <a class="share__op" href="https://wa.me/?text=${ctu}" target="_blank" rel="noopener">WhatsApp</a>
+                <a class="share__op" href="https://t.me/share/url?url=${cu}&text=${ct}" target="_blank" rel="noopener">Telegram</a>
+                <button class="share__op" type="button" data-net="copy">Copiar enlace</button>
+              </div>
+            </div>
+          </div>
         </div>
       </div>`;
     modalEl.classList.add("is-open");
     document.body.style.overflow = "hidden";
     modalEl.querySelector(".modal__cerrar").focus();
+    prefetchImagen(v);
   }
 
   function cerrarModal() {
@@ -148,6 +206,18 @@ import { CONTACTO } from '../data/site.js';
     modalEl.addEventListener("click", (e) => {
       const nav = e.target.closest("[data-nav]");
       if (nav) { navegar(parseInt(nav.dataset.nav, 10)); return; }
+      const share = e.target.closest("[data-share]");
+      if (share) { manejarCompartir(share); return; }
+      const copy = e.target.closest('[data-net="copy"]');
+      if (copy) {
+        const url = location.origin + location.pathname + "#vinos";
+        navigator.clipboard?.writeText(url).then(() => {
+          const prev = copy.textContent;
+          copy.textContent = "¡Enlace copiado!";
+          setTimeout(() => { copy.textContent = prev; }, 1600);
+        }).catch(() => {});
+        return;
+      }
       if (e.target.dataset.close !== undefined) cerrarModal();
     });
     document.addEventListener("keydown", (e) => {
