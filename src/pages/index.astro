@@ -104,17 +104,36 @@ import { CONTACTO } from '../data/site.js';
     abrirModal(lista[i]);
   }
 
-  // Pre-descarga la imagen de la botella como archivo para poder adjuntarla
-  // al compartir de forma nativa sin perder el "gesto de usuario" en el click.
+  // Pre-genera la imagen de la botella sobre fondo blanco (la PNG original es
+  // transparente y se ve negra al compartirla). Se componen lienzo blanco +
+  // botella centrada para que se vea entera, listo para adjuntar al compartir
+  // sin perder el "gesto de usuario" en el click.
   let archivoActual = null;
   function prefetchImagen(v) {
     archivoActual = null;
-    fetch(v.img)
-      .then((r) => r.blob())
-      .then((b) => {
-        archivoActual = new File([b], v.id + ".png", { type: b.type || "image/png" });
-      })
-      .catch(() => {});
+    const img = new Image();
+    img.crossOrigin = "anonymous";
+    img.onload = () => {
+      try {
+        const margen = 0.08; // 8% de aire alrededor
+        const lado = Math.round(Math.max(img.naturalWidth, img.naturalHeight) * (1 + margen * 2));
+        const canvas = document.createElement("canvas");
+        canvas.width = lado;
+        canvas.height = lado;
+        const ctx = canvas.getContext("2d");
+        ctx.fillStyle = "#ffffff";
+        ctx.fillRect(0, 0, lado, lado);
+        ctx.drawImage(
+          img,
+          (lado - img.naturalWidth) / 2,
+          (lado - img.naturalHeight) / 2
+        );
+        canvas.toBlob((b) => {
+          if (b) archivoActual = new File([b], v.id + ".jpg", { type: "image/jpeg" });
+        }, "image/jpeg", 0.92);
+      } catch (e) {}
+    };
+    img.src = v.img;
   }
 
   // Compartir: usa la API nativa (con imagen de la botella) si existe; si no,
