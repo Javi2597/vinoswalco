@@ -10,41 +10,52 @@
  *
  * Props:
  *   poster  (req) ruta de la imagen de respaldo (también poster del video).
- *   src     (opt) ruta del video .mp4/.webm. Si no se pasa, queda solo el poster.
- *   overlay (opt) opacidad del overlay oscuro (0-1). Default 0.6.
+ *   src     (opt) ruta del video .mp4 (respaldo). Si no se pasa, queda solo el poster.
+ *   srcWebm  (opt) ruta del video .webm (más liviano, se prioriza si existe).
+ *   overlay  (opt) opacidad del overlay oscuro (0-1). Default 0.6.
+ *   priority (opt) si el bloque está arriba del pliegue (p. ej. el Hero), carga
+ *            el poster de inmediato para evitar un parpadeo oscuro en el primer
+ *            pintado. Default false (carga diferida, ideal bajo el pliegue).
  */
 interface Props {
   poster: string;
   src?: string;
+  srcWebm?: string;
   overlay?: number;
+  priority?: boolean;
 }
-const { poster, src, overlay = 0.6 } = Astro.props;
+const { poster, src, srcWebm, overlay = 0.6, priority = false } = Astro.props;
+const hasVideo = Boolean(src || srcWebm);
 ---
 <div class="bg-anim" data-bg-anim>
-  <img
-    class="bg-anim__poster"
-    src={poster}
-    alt=""
-    aria-hidden="true"
-    fetchpriority="low"
-    decoding="async"
-  />
-  {src && (
-    <video
-      class="bg-anim__video"
-      data-bg-video
-      data-src={src}
-      poster={poster}
-      autoplay
-      muted
-      loop
-      playsinline
-      preload="none"
+  <div class="bg-anim__inner">
+    <img
+      class="bg-anim__poster"
+      src={poster}
+      alt=""
       aria-hidden="true"
-      tabindex="-1"
-    ></video>
-  )}
-  <div class="bg-anim__overlay" style={`opacity:${overlay}`}></div>
+      fetchpriority={priority ? 'high' : 'low'}
+      loading={priority ? 'eager' : 'lazy'}
+      decoding="async"
+    />
+    {hasVideo && (
+      <video
+        class="bg-anim__video"
+        data-bg-video
+        data-src={src}
+        data-src-webm={srcWebm}
+        poster={poster}
+        autoplay
+        muted
+        loop
+        playsinline
+        preload="none"
+        aria-hidden="true"
+        tabindex="-1"
+      ></video>
+    )}
+    <div class="bg-anim__overlay" style={`opacity:${overlay}`}></div>
+  </div>
 </div>
 
 <style>
@@ -53,6 +64,16 @@ const { poster, src, overlay = 0.6 } = Astro.props;
     inset: 0;
     overflow: hidden;
     z-index: 0;
+    /* Respaldo vinoso: evita un parpadeo negro en los bordes antes de que
+       el poster/video pinten en el primer render. */
+    background: #1a0f12;
+  }
+  /* Envoltorio que contiene poster + video + overlay. Por defecto llena todo
+     el bloque; en mobile se puede fijar al alto de pantalla (ver global.css)
+     para que el video no quede demasiado ampliado en secciones muy altas. */
+  .bg-anim__inner {
+    position: absolute;
+    inset: 0;
   }
   .bg-anim__poster,
   .bg-anim__video {
@@ -79,46 +100,60 @@ const { poster, src, overlay = 0.6 } = Astro.props;
 </style>
 
 <script>
-  // Carga diferida del video de fondo. No corre si no hay <video> (solo poster).
+  // Carga diferida del/los video(s) de fondo. Soporta varias instancias en la
+  // misma página (p. ej. Hero + sección Vinos).
   (function () {
-    const root = document.querySelector<HTMLElement>('[data-bg-anim]');
-    const video = root?.querySelector<HTMLVideoElement>('[data-bg-video]');
-    if (!root || !video) return;
-
-    // En mobile, con movimiento reducido o ahorro de datos: solo el poster.
+    // Con movimiento reducido o ahorro de datos: solo el poster.
     const reduceMotion = matchMedia('(prefers-reduced-motion: reduce)').matches;
-    const isSmall = matchMedia('(max-width: 760px)').matches;
     const saveData = (navigator as any).connection?.saveData === true;
-    if (reduceMotion || isSmall || saveData) return;
+    if (reduceMotion || saveData) return;
 
-    const cargar = () => {
-      const url = video.dataset.src;
-      if (!url) return;
-      video.src = url;
-      video.load();
-      video.addEventListener(
-        'loadeddata',
-        () => video.classList.add('is-ready'),
-        { once: true }
-      );
-      const p = video.play();
-      if (p && typeof p.catch === 'function') p.catch(() => {});
-    };
+    const roots = document.querySelectorAll<HTMLElement>('[data-bg-anim]');
 
-    // Carga sólo cuando el Hero entra en viewport (no bloquea el LCP inicial).
-    if ('IntersectionObserver' in window) {
-      const io = new IntersectionObserver(
-        (entries, obs) => {
-          if (entries.some((e) => e.isIntersecting)) {
-            cargar();
-            obs.disconnect();
-          }
-        },
-        { rootMargin: '200px' }
-      );
-      io.observe(root);
-    } else {
-      cargar();
-    }
+    roots.forEach((root) => {
+      const video = root.querySelector<HTMLVideoElement>('[data-bg-video]');
+      if (!video) return;
+
+      const cargar = () => {
+        const mp4 = video.dataset.src;
+        const webm = video.dataset.srcWebm;
+        if (!mp4 && !webm) return;
+        // Se prioriza WebM (más liviano); el navegador elige el primer formato
+        // que soporta. Se inyectan como <source> para mantener la carga diferida.
+        const fuentes: Array<[string, string]> = [];
+        if (webm) fuentes.push([webm, 'video/webm']);
+        if (mp4) fuentes.push([mp4, 'video/mp4']);
+        for (const [url, type] of fuentes) {
+          const s = document.createElement('source');
+          s.src = url;
+          s.type = type;
+          video.appendChild(s);
+        }
+        video.load();
+        video.addEventListener(
+          'loadeddata',
+          () => video.classList.add('is-ready'),
+          { once: true }
+        );
+        const p = video.play();
+        if (p && typeof p.catch === 'function') p.catch(() => {});
+      };
+
+      // Carga sólo cuando el bloque entra en viewport (no bloquea el LCP inicial).
+      if ('IntersectionObserver' in window) {
+        const io = new IntersectionObserver(
+          (entries, obs) => {
+            if (entries.some((e) => e.isIntersecting)) {
+              cargar();
+              obs.disconnect();
+            }
+          },
+          { rootMargin: '200px' }
+        );
+        io.observe(root);
+      } else {
+        cargar();
+      }
+    });
   })();
 </script>

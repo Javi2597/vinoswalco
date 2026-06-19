@@ -160,6 +160,7 @@ h3{font-size:1.5rem}
 .filtro.is-active{background:var(--wine);color:#fff;border-color:var(--wine)}
 
 /* ---- Vinos ---- */
+.vinos > .container{position:relative;z-index:1}
 .vinos__grid{display:grid;grid-template-columns:repeat(4,1fr);gap:26px}
 .vino-card{
   background:var(--bg-3);border:1px solid var(--line);border-radius:var(--r);
@@ -312,6 +313,12 @@ h3{font-size:1.5rem}
 }
 @media(max-width:760px){
   .section{padding:72px 0}
+  /* En mobile la sección de vinos es muy alta (tarjetas apiladas): si el video
+     cubriera toda la sección quedaría con un zoom enorme. Lo fijamos al alto de
+     pantalla (sticky) para que se vea la escena completa mientras las tarjetas
+     pasan por encima. */
+  .vinos .bg-anim{overflow:visible}
+  .vinos .bg-anim__inner{position:sticky;top:0;height:100vh;height:100svh}
   .nav-toggle{display:flex;margin-left:auto;position:relative;z-index:2}
   .nav__menu{
     position:fixed;top:0;right:-100%;height:100vh;width:78%;max-width:320px;z-index:1;

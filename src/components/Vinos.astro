@@ -1,5 +1,6 @@
 ---
 // 4 · LOS VINOS — catálogo y filtros renderizados en build
+import BackgroundAnimation from './BackgroundAnimation.astro';
 import { VINOS } from '../data/vinos.js';
 import { BODEGAS, nombreBodega, etiquetaBodega } from '../data/bodegas.js';
 
@@ -9,6 +10,12 @@ const filtros = [
 ];
 ---
 <section class="section vinos" id="vinos">
+  <BackgroundAnimation
+    poster="/img/hero-poster.jpg"
+    src="/vid/vinedo-fondo.mp4"
+    srcWebm="/vid/vinedo-fondo.webm"
+    overlay={0.82}
+  />
   <div class="container">
     <div class="section__head">
       <span class="eyebrow">El catálogo</span>
