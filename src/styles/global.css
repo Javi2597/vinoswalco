@@ -236,6 +236,9 @@ h3{font-size:1.5rem}
 .footer__links{display:flex;gap:20px}
 .footer__links a{color:var(--gold-soft);font-size:.88rem}
 .footer__links a:hover{color:var(--gold)}
+.footer__credit{margin-top:22px;padding-top:16px;border-top:1px solid var(--line);text-align:center;color:var(--muted);font-size:.72rem;letter-spacing:.02em}
+.footer__credit a{color:var(--gold-soft)}
+.footer__credit a:hover{color:var(--gold)}
 
 /* ---- Modal ---- */
 .modal{position:fixed;inset:0;z-index:500;display:none;align-items:center;justify-content:center;padding:24px}
