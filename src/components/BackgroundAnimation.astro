@@ -19,12 +19,13 @@
  */
 interface Props {
   poster: string;
+  alt?: string;
   src?: string;
   srcWebm?: string;
   overlay?: number;
   priority?: boolean;
 }
-const { poster, src, srcWebm, overlay = 0.6, priority = false } = Astro.props;
+const { poster, alt = '', src, srcWebm, overlay = 0.6, priority = false } = Astro.props;
 const hasVideo = Boolean(src || srcWebm);
 ---
 <div class="bg-anim" data-bg-anim>
@@ -32,7 +33,7 @@ const hasVideo = Boolean(src || srcWebm);
     <img
       class="bg-anim__poster"
       src={poster}
-      alt=""
+      alt={alt}
       aria-hidden="true"
       fetchpriority={priority ? 'high' : 'low'}
       loading={priority ? 'eager' : 'lazy'}
